@@ -67,24 +67,23 @@
                     <span>Sair</span>
                 </a>
             </div>
-    </div>
-    </aside>
-    <div class="main-content">
-        <header class="topbar">
-            <div class="search-area">
-                <i class="fas fa-search"></i>
-                <input type="text" placeholder="Pesquisar....">
-            </div>
-            <div class="user-area">
-                <button class="dark-mode-toggle" id="darkModelToggle">
-                    <i class="fas fa-moon"></i>
-                </button>
-
-                <div class="notification">
-                    <i class="fas fa-bell"></i>
-                    <span class="badge">3</span>
+        </aside>
+        <div class="main-content">
+            <header class="topbar">
+                <div class="search-area">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Pesquisar....">
                 </div>
-
+                <div class="user-area">
+                    <button class="dark-mode-toggle" id="darkModeToggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    
+                    <div class="notification">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                </div>
+                
                 <div class="user-profile">
                     <img src="https://randomuser.me/api/portraits/men/25.jpg" alt="Avatar">
                     <span>Pedro</span>
@@ -92,13 +91,13 @@
                 </div>
             </div>
         </header>
-
+        
         <main>
             <div class="page-header">
                 <h1>Dashboard</h1>
                 <p>Bem-vindo de volta, Pedro! Aqui está o resumo do seu negócio.</p>
             </div>
-
+            
             <div class="cards-grid">
                 <div class="card">
                     <div class="card-icon">
@@ -107,7 +106,7 @@
                     <div class="card-info">
                         <h3>Faturamento</h3>
                         <p class="value">R$ 47.892</p>
-                        <span class="trend-up">+12,5%</span>
+                        <span class="trend up">+12,5%</span>
                     </div>
                 </div> 
                 
@@ -118,11 +117,11 @@
                     <div class="card-info">
                         <h3>Clientes</h3>
                         <p class="value">R$ 1.284</p>
-                        <span class="trend-up">+8,2%</span>
+                        <span class="trend up">+8,2%</span>
                     </div>
                 </div> 
                 
-
+                
                 <div class="card">
                     <div class="card-icon">
                         <i class="fas fa-shopping-bag"></i>
@@ -130,7 +129,7 @@
                     <div class="card-info">
                         <h3>Vendas</h3>
                         <p class="value">R$ 3.421</p>
-                        <span class="trend-down">+2,1%</span>
+                        <span class="trend down">+2,1%</span>
                     </div>
                 </div> 
                 
@@ -142,12 +141,12 @@
                     <div class="card-info">
                         <h3>Conversão</h3>
                         <p class="value">23,8%</p>
-                        <span class="trend-up">+5,3%</span>
+                        <span class="trend up">+5,3%</span>
                     </div>
                 </div> 
             </div>
-                <div class="table-container">
-                    <div class="table-header">
+            <div class="table-container">
+                <div class="table-header">
                         <h2>Pedidos Recentes</h2>
                         <a href="#" class="btn-link">Ver todos<i class="fas fa-arrow-right"></i></a>
                     </div>
@@ -209,8 +208,45 @@
             </div>
         </main>
     </div>
+    </div>
 
     <script>
+
+    
+   // TOGGLE SIDEBAR
+
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    const dashboard = document.querySelector('.dashboard');
+
+    sidebarToggle.addEventListener('click', () => {
+        dashboard.classList.toggle('sidebar-collapsed');
+    });
+
+
+
+    
+    // DARK MODE
+    
+
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    const body = document.body;
+
+    darkModeToggle.addEventListener('click', () => {
+
+        body.classList.toggle('dark-mode');
+
+        const icon = darkModeToggle.querySelector('i');
+
+        if(body.classList.contains('dark-mode')){
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+        } else{
+            icon.classList.remove('fa-sun');
+            icon.classList.add('fa-moon');
+        }
+
+    });
+
 
     </script>
 </body>
