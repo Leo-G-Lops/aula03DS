@@ -8,7 +8,7 @@
     /* Cores */
     --primary: #6366f1;
     --primary-dark: #4f46e5;
-    -secondary: #10b981;
+    --secondary: #10b981;
     --danger: #ef4444;
     --warning: #f59e0b;
     --dark: #1e293b;
@@ -23,7 +23,7 @@
 
     /* espaçamentos */
     --sidebar-width:260px;
-    --sideabr-collapsed:72px;
+    --sidebar-collapsed:72px;
     --header-height:70px;
 
     /* sombras */
@@ -142,7 +142,7 @@ body{
 }
 
 .sidebar-footer {
-    padding:1rem 1.5rem;
+    padding:1rem 0;
     margin-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -152,7 +152,28 @@ body{
     gap: 0.75rem;
     color: var(--gray-300);
     text-decoration: none;
-    padding:0.5rem 0;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.sidebar-footer a:hover{
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #fff;
+}
+
+.sidebar-footer a:active{
+    background-color: var(--danger);
+    color: #fff;
+    border-radius: 0.5rem;
+    margin: 0 0.75rem;
+    padding: 0.75rem 0.75rem;
+}
+
+.dashboard.sidebar-collapsed .sidebar-footer a{
+    justify-content: center;
+    padding: 0.75rem;
 }
 
 .main-content{
@@ -340,4 +361,289 @@ main{
 .trend.down {
     color: var(--danger);
     background: rgba(239, 68, 68, 0.1);
+}
+/*-------------------------------------------------------*/
+
+ /* TABELA - PEDIDOS RECENTES */
+
+.table-container{
+    background: #fff;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 2rem;
+}
+
+.table-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.table-header h2{
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--gray-800);
+}
+
+.btn-link{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: var(--primary);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: 0.2s;
+}
+
+.btn-link:hover{
+    color: var(--primary-dark);
+}
+
+.data-table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.data-table thead{
+    background: var(--gray-100);
+}
+
+.data-table th{
+    text-align: left;
+    padding: 1rem;
+    font-size: 0.875rem;
+    color: var(--gray-700);
+    font-weight: 600;
+}
+
+.data-table td{
+    padding: 1rem;
+    border-bottom: 1px solid var(--gray-200);
+    font-size: 0.9rem;
+}
+
+.data-table tbody tr{
+    transition: background 0.2s;
+}
+
+.data-table tbody tr:hover{
+    background: var(--gray-50);
+}
+
+/* STATUS */
+
+.status{
+    display: inline-block;
+    padding: 0.35rem 0.8rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.status.success{
+    background: rgba(16, 185, 129, 0.15);
+    color: #10b981;
+}
+
+.status.warning{
+    background: rgba(245, 158, 11, 0.15);
+    color: #f59e0b;
+}
+
+.status.danger{
+    background: rgba(239, 68, 68, 0.15);
+    color: #ef4444;
+}
+
+/* GRÁFICO DE VENDAS */
+
+.charts-row{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+.chart-card{
+    background: #fff;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.chart-card h3{
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    color: var(--gray-800);
+}
+
+.bar-chart{
+    height: 250px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.bar-item{
+    flex: 1;
+    background: linear-gradient(
+        180deg,
+        var(--primary) 0%,
+        var(--primary-dark) 100%
+    );
+    border-radius: 0.75rem 0.75rem 0 0;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 0.75rem;
+    color: white;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.bar-item:hover{
+    transform: translateY(-5px);
+    opacity: 0.9;
+}
+
+.bar-item::before{
+    content: attr(data-value);
+    position: absolute;
+    top: -28px;
+    background: var(--gray-900);
+    color: #fff;
+    font-size: 0.75rem;
+    padding: 0.3rem 0.5rem;
+    border-radius: 0.5rem;
+    opacity: 0;
+    transition: 0.2s;
+}
+
+.bar-item:hover::before{
+    opacity: 1;
+}
+
+/* RESPONSIVIDADE */
+
+@media(max-width: 768px){
+
+    .topbar{
+        padding: 0 1rem;
+    }
+
+    main{
+        padding: 1rem;
+    }
+
+    .search-area{
+        width: 180px;
+    }
+
+    .table-container{
+        overflow-x: auto;
+    }
+
+    .data-table{
+        min-width: 700px;
+    }
+
+    .cards-grid{
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/*-------------------------------------------------------------------*/
+
+/* DARK MODE */
+
+body.dark-mode{
+    background: #0f172a;
+    color: #f8fafc;
+}
+
+body.dark-mode .topbar,
+body.dark-mode .card,
+body.dark-mode .table-container,
+body.dark-mode .chart-card{
+    background: #1e293b;
+    color: #fff;
+}
+
+body.dark-mode .search-area{
+    background: #334155;
+}
+
+body.dark-mode .search-area input{
+    color: #fff;
+}
+
+body.dark-mode .data-table thead{
+    background: #334155;
+}
+
+body.dark-mode .data-table td{
+    border-bottom: 1px solid #334155;
+}
+
+body.dark-mode .data-table tbody tr:hover{
+    background: rgba(255,255,255,0.03);
+}
+
+body.dark-mode .page-header p,
+body.dark-mode .card-info h3,
+body.dark-mode .table-header h2,
+body.dark-mode .chart-card h3,
+body.dark-mode .data-table th{
+    color: #cbd5e1;
+}
+
+body.dark-mode .dark-mode-toggle{
+    color: #fff;
+}
+
+/* SIDEBAR COLLAPSED */ 
+
+.dashboard.sidebar-collapsed{
+    grid-template-columns: 72px 1fr;
+}
+
+.dashboard.sidebar-collapsed .logo span,
+.dashboard.sidebar-collapsed .sidebar-nav span,
+.dashboard.sidebar-collapsed .sidebar-footer span{
+    display: none;
+}
+
+.dashboard.sidebar-collapsed .sidebar-header{
+    justify-content: center;
+    padding:1.5rem 0;
+}
+
+.dashboard.sidebar-collapsed .logo{
+    display: none;
+}
+
+.dashboard.sidebar-collapsed .sidebar-nav span,
+.dashboard.sidebar-collapsed .sidebar-footer span{
+    display: none;
+}
+
+.dashboard.sidebar-collapsed .sidebar-nav li a,
+.dashboard.sidebar-collapsed .sidebar-footer a{
+    justify-content: center;
+}
+
+.dashboard.sidebar-collapsed .sidebar-toggle{
+    position: static;
+    background: transparent;
+    width: auto;
+    height: auto;
+    border-radius: 0;
+
 }
